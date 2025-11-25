@@ -3,6 +3,8 @@ name: "Code Scanning - Action"
 on:
   pull_request:
     branches: [main]
+  push:
+    branches: main
 
 jobs:
   CodeQL-Build:
@@ -20,6 +22,8 @@ jobs:
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
+        with: 
+          input: .github/codeql/codeql-config.yml
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
